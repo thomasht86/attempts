@@ -1,0 +1,51 @@
+baseURL = 'https://thomasht86.github.io/ad-se-ipsum/'
+locale = 'en-us'
+title = 'ad se ipsum'
+theme = 'PaperMod'
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  defaultTheme = 'dark'   # 'dark' | 'light' | 'auto'; readers can still toggle
+  ShowReadingTime = true
+  ShowCodeCopyButtons = true
+  ShowPostNavLinks = true
+  ShowToc = true
+  TocOpen = false
+
+  [params.label]
+    text = 'ad se ipsum'
+    icon = 'assets/img/arete-logo.svg'
+    iconHeight = 28
+
+  [params.homeInfoParams]
+    Title = 'ad se ipsum'
+    Content = 'Writings about AI, philosophy, life, sports and kids. My primary audience is myself: *ad se ipsum* is Latin for "to himself".'
+
+[[menu.main]]
+  name = 'Archive'
+  url = '/archives/'
+  weight = 10
+[[menu.main]]
+  name = 'Tags'
+  url = '/tags/'
+  weight = 20
+[[menu.main]]
+  name = 'Search'
+  url = '/search/'
+  weight = 30
+[[menu.main]]
+  name = 'About'
+  url = '/about/'
+  weight = 40
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']   # JSON powers the search page
+
+[markup]
+  [markup.highlight]
+    noClasses = false   # PaperMod ships its own Chroma CSS
+  [markup.goldmark.renderer]
+    unsafe = true       # allow raw HTML in markdown

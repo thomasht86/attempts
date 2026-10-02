@@ -1,0 +1,17 @@
+{{- if .Store.Get "hasMermaid" }}
+<script src="{{ "js/mermaid.min.js" | relURL }}"></script>
+<script>
+  (function () {
+    const nodes = document.querySelectorAll("pre.mermaid");
+    nodes.forEach((n) => (n.dataset.src = n.textContent));
+    const render = () => {
+      const dark = document.documentElement.dataset.theme === "dark";
+      mermaid.initialize({ startOnLoad: false, theme: dark ? "dark" : "default" });
+      nodes.forEach((n) => { n.removeAttribute("data-processed"); n.textContent = n.dataset.src; });
+      mermaid.run({ nodes });
+    };
+    render();
+    document.getElementById("theme-toggle")?.addEventListener("click", () => setTimeout(render, 0));
+  })();
+</script>
+{{- end }}
