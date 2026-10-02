@@ -44,3 +44,34 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Posts with `crosspost = ['x']` in their front matter are published to X as Articles,
+  # once, after the site is live. A failure here never affects the site itself.
+  crosspost:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # to record what was posted in data/crossposts/x.json
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Hugo
+        run: |
+          curl -sSLo hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i hugo.deb
+      - uses: astral-sh/setup-uv@v6
+      - name: Cross-post to X
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: uv run --locked scripts/crosspost_x.py
+      - name: Record cross-posts
+        if: always()
+        run: |
+          git add data/crossposts
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Record X cross-posts"
+          git pull --rebase && git push

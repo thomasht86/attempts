@@ -18,6 +18,15 @@ Set `draft = false` when a post is ready, then push to `main`. GitHub Actions bu
 - Code fences are highlighted at build time (Chroma).
 - ` ```mermaid ` fences render as diagrams (mermaid.js is loaded only on pages that use it).
 
+## Cross-posting to X
+
+Add `crosspost = ['x']` to a post's front matter. When the post is published, the deploy workflow also publishes it as an X Article: images and mermaid diagrams are uploaded, code and tables are kept, and the article ends with a link back to the post. Each post goes out once; `data/crossposts/x.json` records what was posted, and the workflow commits it back (run `git pull` afterwards).
+
+- Preview the conversion: `uv run scripts/crosspost_x.py --dry-run --file content/posts/<post>.md`
+- Edits made after a post is on X don't sync; the X API can't update an article. Edit it on X by hand.
+- X accepts PNG, JPEG, GIF and WebP images. Other formats (SVG) are replaced by a text placeholder.
+- Needs X Premium, plus an X developer app with OAuth 1.0a user tokens (read and write) stored as repo secrets: `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`. Without the secrets, the job skips cross-posting with a warning.
+
 ## Built to keep working for years
 
 - **Hugo version is pinned** in `.github/workflows/pages.yml` (`HUGO_VERSION`). Use the same version locally. To upgrade, bump it, run `hugo server`, and fix any warnings.
