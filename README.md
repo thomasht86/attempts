@@ -4,7 +4,7 @@ Writings about AI, philosophy, life, sports, kids.
 
 Reminders to myself.
 
-Built with [Hugo](https://gohugo.io) and the PaperMod theme, deployed to GitHub Pages at https://thomasht86.github.io/ad-se-ipsum/.
+Built with [Hugo](https://gohugo.io) and the PaperMod theme, deployed to GitHub Pages at https://thomasht86.github.io/attempts/.
 
 ## Writing
 
