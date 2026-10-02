@@ -1,6 +1,7 @@
 +++
 title = 'About'
 url = '/about/'
+hiddenInRss = true
 +++
 
 I am a father, athlete, software engineer, and philosopher [^1].

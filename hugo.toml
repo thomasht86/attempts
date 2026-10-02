@@ -1,6 +1,6 @@
 baseURL = 'https://thomasht86.github.io/ad-se-ipsum/'
 locale = 'en-us'
-title = 'ad se ipsum'
+title = 'attempts'
 theme = 'PaperMod'
 enableRobotsTXT = true
 
@@ -9,20 +9,16 @@ enableRobotsTXT = true
 
 [params]
   defaultTheme = 'dark'   # 'dark' | 'light' | 'auto'; readers can still toggle
+  mainSections = ['posts']   # home, archive and RSS list only these; old posts live under /old/
   ShowReadingTime = true
   ShowCodeCopyButtons = true
   ShowPostNavLinks = true
   ShowToc = true
   TocOpen = false
 
-  [params.label]
-    text = 'ad se ipsum'
-    icon = 'assets/img/arete-logo.svg'
-    iconHeight = 28
-
   [params.homeInfoParams]
-    Title = 'ad se ipsum'
-    Content = 'Writings about AI, philosophy, life, sports and kids. My primary audience is myself: *ad se ipsum* is Latin for "to himself".'
+    Title = 'attempts'
+    Content = 'Writings about AI, philosophy, life, sports and kids.'
 
 [[menu.main]]
   name = 'Archive'
@@ -36,6 +32,10 @@ enableRobotsTXT = true
   name = 'Search'
   url = '/search/'
   weight = 30
+[[menu.main]]
+  name = 'Old'
+  url = '/old/'
+  weight = 35
 [[menu.main]]
   name = 'About'
   url = '/about/'

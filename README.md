@@ -1,4 +1,4 @@
-# ad se ipsum
+# attempts
 
 Writings about AI, philosophy, life, sports, kids.
 
@@ -26,6 +26,6 @@ Set `draft = false` when a post is ready, then push to `main`. GitHub Actions bu
 
 ## Notes
 
-- Posts migrated from MkDocs keep their old URLs through `url` in the front matter. New posts get `/posts/<slug>/`.
+- `content/old/` holds the posts migrated from the MkDocs site. They keep their old URLs through `url` in the front matter, and they are listed only at `/old/`, not on the home page, archive or RSS (`mainSections` in `hugo.toml`). New posts go in `content/posts/` and get `/posts/<slug>/`.
 - `archive/` holds the original Norwegian posts. They are not published.
 - `static/twister/` is a standalone HTML app, served as-is.
